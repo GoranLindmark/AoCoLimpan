@@ -3,25 +3,30 @@ library(stringr)
 indata <- "bvwbjplbgvbhsrlpgdmjqwftvncz"
 
 
-allCharsUnique <- function(str){
- str <- unlist(strsplit(str, ""))
- if ( !str[1] %in% str[2:4] )
+allCharsUnique <- function(str) {
+  str <- unlist(strsplit(str, ""))
+  res <- list()
 
- 1  2:4
- 2  1,3:4
- 3  1:2, 4
- 4  1:3
+  res[1] <- !(str[1] %in% str[2:4])
+  res[2] <- !(str[4] %in% str[1:3])
+  res[3] <- !(str[2] %in% c(str[1], str[3:4]))
+  res[4] <- !(str[3] %in% c(str[1:2], str[4]))
 
- }
+  notFound <- all(unlist(res))
+  return(notFound)
+}
 
 window <- function(indata, anchor){
 
   str_sub(indata, anchor-3, anchor)
 }
 
-anchor <- 4
 for (anchor in 4:str_length(indata)){
-  print(window(indata, anchor))
+
+  if (allCharsUnique( window(indata, anchor))){
+    print(paste("first stop =",anchor))
+    break
+  }
+
 }
 
-str <- "ajoi"
