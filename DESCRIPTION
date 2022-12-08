@@ -1,12 +1,14 @@
 Package: AoCoLimpan
 Type: Package
-Title: Solve som of the Advent of Code problems
+Title: Solve some of the 2022 Advent of Code problems
 Version: 0.1.0
 Author: Goran Lindmark
 Maintainer: Göran LIndmark <lindmark.goran@gmail.com>
 Description: This solves some of the Advent of Code 2022 problems that are published daily
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/GoranLindmark/AoCoLimpan
 BugReports: https://github.com/GoranLindmark/AoCoLimpan/issues
+RoxygenNote: 7.2.1
+Imports: dplyr, stringr, tidyr, magrittr, rlist

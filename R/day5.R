@@ -1,7 +1,12 @@
-library(tidyverse)
-library(rlist)
+#' day5
+#'
+#' @return
+#' @export
+#' @importFrom magrittr %>%
+#' @import dplyr tidyr
+day5 <- function(){
 # DATA
-warehouse <- tribble( ~x1,   ~x2,     ~x3,  ~x4,    ~x5,  ~x6,    ~x7,   ~x8,  ~x9,
+warehouse <- tidyr::tribble( ~x1,   ~x2,     ~x3,  ~x4,    ~x5,  ~x6,    ~x7,   ~x8,  ~x9,
                       "[Q]",  NA,   "[P]", "[P]",    NA,    NA,    NA,    NA,   NA,
                       "[G]", "[V]", "[S]", "[Z]", "[F]",    NA,    NA,    NA,   NA,
                       "[W]", "[V]", "[F]", "[Z]", "[W]", "[Q]",    NA,    NA,   NA,
@@ -10,9 +15,9 @@ warehouse <- tribble( ~x1,   ~x2,     ~x3,  ~x4,    ~x5,  ~x6,    ~x7,   ~x8,  ~
                       "[C]", "[W]", "[R]", "[H]", "[H]", "[P]", "[T]", "[M]", "[B]",
                       "[Q]", "[Q]", "[M]", "[Z]", "[Z]", "[N]", "[G]", "[G]", "[J]",
                       "[B]", "[R]", "[B]", "[C]", "[D]", "[H]", "[D]", "[C]", "[N]") %>%
-              mutate( sort = 1:nrow(.)) %>%
-              arrange(-sort) %>%
-              select(-sort) %>%
+              dplyr::mutate( sort = 1:nrow(.)) %>%
+              dplyr::arrange(-sort) %>%
+              dplyr::select(-sort) %>%
               as.list()
 warehouse$x9 <- warehouse$x9[!is.na(warehouse$x9)]
 warehouse$x8 <- warehouse$x8[!is.na(warehouse$x8)]
@@ -54,3 +59,4 @@ mapply(extractCrates,
        test$fromStack,
        MoreArgs = list(toStack = test$toStack, crateNo = test$crateNo))
 
+}
