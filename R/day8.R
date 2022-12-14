@@ -112,14 +112,13 @@ day8 <- function() {
 
   forrest <- unlist(strsplit(forrest, ""))
   forrest <- matrix(forrest, ncol = 99, byrow = T)
-  forrest <- forrest %>% as_tibble()
+  forrest <- forrest %>% as.data.frame()
 
-  pos <- integer()
-  noTrees <- integer()
-  soFarHighest <- NA
   nextChar <- integer()
-  allTrees <- list(rowFront = list(), rowsBack = list(), colUpp = list(), colDown= list())
-
+  allTrees <- data.frame(matrix(NA,    # Create empty data frame
+                            nrow = 99,
+                            ncol = 4))
+  names(allTrees) <- c( "rowFront", "rowsBack", "colUpp", "ColDown")
 
 
 
@@ -136,9 +135,8 @@ day8 <- function() {
         noTrees <- noTrees + 1
       }
     }
-    allTrees[[1]][row] <- noTrees
+    allTrees$rowFront[row] <- noTrees
   }
-
 
   # pass two
   for (row in 1:99) {
@@ -153,7 +151,7 @@ day8 <- function() {
         noTrees <- noTrees + 1
       }
     }
-    allTrees[[2]][row] <- noTrees
+    allTrees$rowsBack[row] <- noTrees
   }
 
 
@@ -166,12 +164,12 @@ day8 <- function() {
         soFarHighest <- nextChar
         noTrees <- 1
       }
-      if (nextChar > soFarHighest){}
+      if (nextChar > soFarHighest){
         soFarHighest <- nextChar
         noTrees <- noTrees + 1
       }
     }
-    allTrees[[3]][col] <- noTrees
+    allTrees$colUpp[col] <- noTrees
   }
 
 
@@ -188,9 +186,9 @@ day8 <- function() {
         noTrees <- noTrees + 1
       }
     }
-    allTrees[[3]][col] <- noTrees
+    allTrees$ColDown[col] <- noTrees
   }
 
- x <- as_tibble(allTrees)
 
+ return(sum( allTrees$rowFront ) + sum(allTrees$rowsBack + sum(allTrees$colUpp) + sum(allTrees$colDown)))
 }

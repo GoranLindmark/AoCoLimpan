@@ -1,0 +1,87 @@
+/
+- a (dir)
+  -e (dir)
+    - i
+  - f
+  - g
+  -h.lst
+- b.txt
+- c.dat
+- d (dir)
+  -j
+  -d.log
+  -k
+
+
+  ->$ cd /
+    $ ls
+    dir a
+    14848514 b.txt
+    8504156 c.dat
+    dir d
+  ->$ cd a
+    $ ls
+    dir e
+    29116 f
+    2557 g
+    62596 h.lst
+  ->$ cd e
+    $ ls
+    584 i
+  <-$ cd ..
+  <-$ cd ..
+  ->$ cd d
+    $ ls
+    4060174 j
+    8033020 d.log
+    5626152 d.ext
+    7214296 k
+
+    Förslag till lösning:
+    skapa en list struktur av dir genom att titta på $ cd och $ cd ..
+    markera alla filer med vilket bibliotek de tillhör och vilket överordnat bibliotek.
+
+
+  dirStruktur <- list ( fatherDir, list(dir), size)
+
+  [1] root
+  [2] dir
+  [3] dir d
+  [4] dir
+
+  dirstruktur$dir[1] <- "/"
+  dirstruktur$fatherDir[2] <- "/"
+  dirstruktur$dir[1][1] <- "a"
+  dirstruktur$size[1] <- 14848514
+  dirstruktur$size[1] <- 14848514 + 8504156
+  dirstruktur$dir[1][2] <- d
+  dirstruktur$fatherDir[2] <- "a"
+  dirstruktur$dir[2][1] <- d
+
+
+  df( dir, fatherDir, size)
+
+  a , / , NA
+  NA, / , 14848514
+  na, / , 8504156
+  d, / , na
+  e, a, na
+  na, a, 8504156
+  na, a, 2557
+  na, a, 62596
+
+
+  df ( dir, size)
+
+  / , a
+  / , 14848514 b.txt
+  / , d
+  a , e
+  a , 29116 f
+  a , 2557 g
+  a , 62596 h.lst
+  e , 584 i
+  d , 4060174 j
+  d , 8033020 d.log
+  d , 5626152 d.ext
+  d , 7214296 k
