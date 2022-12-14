@@ -3,6 +3,7 @@
 export("%>%")
 export(day5)
 export(day6)
+export(day8)
 import(dplyr)
 import(stringr)
 import(tidyr)
