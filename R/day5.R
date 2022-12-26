@@ -1,6 +1,5 @@
 #' day5
 #'
-#' @return
 #' @export
 #' @importFrom magrittr %>%
 #' @import dplyr tidyr

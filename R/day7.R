@@ -1,10 +1,10 @@
 
 #' day7
 #'
-#' @return
+#' @return {directory list}
 #' @export
-#' @import from magrittr %>%
-#' @import dplyr, tidyr, stringr, readr
+#' @importFrom magrittr %>%
+#' @import dplyr tidyr stringr readr
 
 day7 <- function() {
   findStructure <- function() {
@@ -53,7 +53,7 @@ day7 <- function() {
       return(res)
     }
 
-    cmdLogg <- read.csv("data-raw/day7rawData", header = F)
+    cmdLogg <- read.csv('R/day7rawData', header = F)
 
     dirStructure <- tidyr::tibble( dir = character(), sDir = character())
     fileStructure <- tidyr::tibble ( fName = character(), dir = character(), size = double())

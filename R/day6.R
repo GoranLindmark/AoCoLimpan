@@ -1,6 +1,5 @@
 #' day6
 #'
-#' @return
 #' @export
 #'
 #' @import stringr

@@ -10,5 +10,5 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/GoranLindmark/AoCoLimpan
 BugReports: https://github.com/GoranLindmark/AoCoLimpan/issues
-RoxygenNote: 7.2.1
-Imports: dplyr, stringr, tidyr, magrittr, rlist
+RoxygenNote: 7.2.3
+Imports: dplyr, stringr, tidyr, magrittr, rlist, readr
