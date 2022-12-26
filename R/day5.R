@@ -28,7 +28,7 @@ warehouse$x2 <- warehouse$x2[!is.na(warehouse$x2)]
 
 
 
-cmd_s <- utils::read.csv("R/day5cmd", header = F, sep = " " ) %>%
+cmd_s <- utils::read.csv("data/day5cmd", header = F, sep = " " ) %>%
   dplyr::select(-V1, -V3, -V5) %>%
   dplyr::rename(crateNo = V2, fromStack = V4, toStack = V6)
 

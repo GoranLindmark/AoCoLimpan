@@ -53,7 +53,7 @@ day7 <- function() {
       return(res)
     }
 
-    cmdLogg <- read.csv('R/day7rawData', header = F)
+    cmdLogg <- read.csv('data/day7rawData', header = F)
 
     dirStructure <- tidyr::tibble( dir = character(), sDir = character())
     fileStructure <- tidyr::tibble ( fName = character(), dir = character(), size = double())
